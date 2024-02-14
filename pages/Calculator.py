@@ -1,5 +1,6 @@
 import streamlit as st
 
+
 if 'display' not in st.session_state:
     st.session_state['display']: str = '0'
 if 'operation' not in st.session_state:
@@ -15,6 +16,7 @@ if 'new_operand' not in st.session_state:
 
 
 def format_number(num):
+    """Function that cuts unnecessary zeros and commas"""
     if num % 1 == 0:
         return str(int(num))
     else:
@@ -22,6 +24,7 @@ def format_number(num):
 
 
 def calculate(operand1, operand2, operator):
+    """Function that performs mathematical operations"""
     if operator == "+":
         return format_number(operand1 + operand2)
 
@@ -39,12 +42,14 @@ def calculate(operand1, operand2, operator):
 
 
 def reset():
+    """Function that reset calculator state"""
     st.session_state['operator'] = "+"
     st.session_state['operand1'] = 0
     st.session_state['new_operand'] = True
 
 
 def button_clicked(key):
+    """Function that chose acton depend on button clicked"""
     if st.session_state['display'] == 'Error' or key == 'AC':
         st.session_state['display'] = "0"
         reset()
@@ -83,9 +88,10 @@ def button_clicked(key):
             st.session_state['display'] = '0'
 
 
-
+# page layout
 st.set_page_config(page_title='Calculator')
 st.title('Calculator')
+st.write('This is the calculator app that hopefully do what every well behave calculator should do')
 
 col0, col1, col2 = st.columns([3, 4, 3])
 with col1:
@@ -94,9 +100,6 @@ with col1:
 
 
 with st.container():
-    with st.container():
-        pass
-
     col0, col1, col2, col3, col4, col5 = st.columns([3, 1, 1, 1, 1, 3])
 
     with col0:

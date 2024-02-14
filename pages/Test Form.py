@@ -22,6 +22,7 @@ if 'date_of_birth' not in st.session_state:
 
 
 def check_form():
+    """Form field validation after submit button was pressed"""
     if not st.session_state['form_accepted']:
         st.session_state['form_accepted'] = True
         if len(st.session_state['first_name']) > 0:
@@ -61,6 +62,7 @@ def check_form():
 st.session_state.horizontal = True
 
 st.title('Personal Form')
+st.text('This is the form app for my test automation showcase')
 
 
 if not st.session_state['form_accepted']:
